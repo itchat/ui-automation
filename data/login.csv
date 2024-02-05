@@ -1,0 +1,4 @@
+username	password	assertion	url	method
+superman	superman2018	xpath=//a[contains(text(),'用户管理')]	https://192.168.10.172/sysManage/userManage	text
+admin	admin2018	img	https://192.168.10.172/sysManage/userManage	role
+audit	audit2018	img	https://192.168.10.172/sysManage/userManage	role
