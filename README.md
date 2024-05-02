@@ -2,36 +2,36 @@
 
 ## Framework
 
-UI 部分框架采用了微软 Playwright
+The UI automation framework utilizes Microsoft's Playwright.
 
-- 框架全自动元素检查等待，用户无需自行额外下载 Google Chrome 等主流浏览器驱动，直接在参数中指定 channel 即可
-- 启动速度相比于 selenium 较快并且其 codegen 生成器支持录制操作行为后生成代码，与 selenium IDE 功能类似
-- 相比于 selenium 额外封装了可能的多种定位方法，无需额外二次封装
+- The framework automatically handles element checks and waiting, eliminating the need for users to manually download browser drivers for popular browsers like Google Chrome. Simply specify the desired channel in the parameters.
+- Compared to Selenium, the framework offers faster startup times, and its codegen generator supports recording user actions and generating corresponding code, similar to the functionality of Selenium IDE.
+- The framework provides additional built-in element locator methods compared to Selenium, eliminating the need for further customization.
 
 ## Design Pattern
 
-POM 设计模式
+The framework follows the Page Object Model (POM) design pattern.
 
 - base
-  - 封装断言方法，指定元素方法是否可见
-  - 模拟人手输入方法
-  - 断言元素是否被选中
-  - 截图功能
-  - 点击器封装
-  - 打开网页
+  - Encapsulates assertion methods to determine element visibility.
+  - Simulates human-like input methods.
+  - Asserts whether an element is selected.
+  - Provides screenshot functionality.
+  - Encapsulates click handlers.
+  - Enables opening web pages.
 - data
-  - 存放各模块 DDT 模式所需数据，更具模块需要自由定义格式字段
+  - Contains data required for the Data-Driven Testing (DDT) approach in each module. The format and fields can be freely defined based on module requirements.
 - page
-  - 各模块元素存放在此文件夹，可用 playwright codegen 指令自动生成，现阶段定位方法只添加了两个，后期需补全
+  - Stores elements for each module. Elements can be automatically generated using the Playwright codegen command. Currently, only two locator methods are added, and additional methods need to be implemented in the future.
 - testcase
-  - 调试模块，方法根据 data 中的字段而言修改装饰器
+  - Serves as the debugging module. Methods should be modified based on the fields defined in the data folder, using decorators.
 - tools
-  - 神经网络自动识别验证码、CSV 数据导入装饰器：手动 closure 闭包实现
+  - Implements neural network-based automatic captcha recognition and a CSV data import decorator using manual closure.
 
 ## Optimization
 
-框架依然有大量优化尚未完成，可自行探索学习
+The framework still has significant room for optimization and exploration.
 
-- 针对断言部分结合 pytest, 替代自行闭包实现的 csv reader 装饰器
-- DDT 向 KDT 的转变学习
-- 多 TAB 同时多线程异步操作不同的测试模块
+- Integrate pytest for assertions, replacing the manually implemented CSV reader decorator using closures.
+- Transition from Data-Driven Testing (DDT) to Keyword-Driven Testing (KDT) approach.
+- Implement multi-tab concurrent and asynchronous operations for different test modules using multithreading.
